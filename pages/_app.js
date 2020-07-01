@@ -4,10 +4,15 @@ import MenuComponent from '../src/components/header/Menu'
 import {
     Grid
 } from '../src/components/styles'
-
+import Head from 'next/head'
 function MyApp({ Component, pageProps }) {
     return (
         <Grid>
+            <Head>
+                <title>Algorithms</title>
+                <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+                <link rel="shortcut icon" href="/favicon.ico" />
+            </Head>
             <MenuComponent />
             <Component {...pageProps} />
         </Grid>
