@@ -9,9 +9,9 @@ function MyApp({ Component, pageProps }) {
     return (
         <Grid>
             <Head>
-                <title>Algorithms</title>
-                <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-                <link rel="shortcut icon" href="public/favicon.ico" />
+                <title>algorithms</title>
+                <meta name={"viewport"} content={"initial-scale=1.0, width=device-width"} />
+                <link rel={"shortcut icon"} href={"/favicon2.png"} />
             </Head>
             <MenuComponent />
             <Component {...pageProps} />
