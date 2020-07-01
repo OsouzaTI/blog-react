@@ -11,7 +11,7 @@ function MyApp({ Component, pageProps }) {
             <Head>
                 <title>Algorithms</title>
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-                <link rel="shortcut icon" href="/favicon.ico" />
+                <link rel="icon" type="image/x-icon" href="/favicon.ico" />
             </Head>
             <MenuComponent />
             <Component {...pageProps} />
