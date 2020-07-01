@@ -8,7 +8,7 @@ const api = setup({
 })
 
 export const InternalApi = setup({
-    baseURL: 'http://localhost:3000',
+    baseURL: 'https://algorithms-study.herokuapp.com',
     cache: {
         maxAge: 15 * 60 * 1000
     }
