@@ -7,7 +7,7 @@ import {
 	MenuItem
 } from '../../src/components/styles'
 import api from '../api/defaultAxios'
-
+import Modal from '../../src/components/Modal'
 export default () => {
 	const router = useRouter()	
 	const { user } = router.query; 
@@ -66,6 +66,7 @@ export default () => {
 						fontSize: 16
 					}}
 				/>
+				<Modal title={'Upload Image'}/>
 				<MenuItem style={{borderBottomColor: 'red'}} onClick={enviarPost}>
 					<a>Publicar</a>
 				</MenuItem>
