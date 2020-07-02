@@ -30,7 +30,7 @@ export default function Post(props) {
     const { name } = router.query;    
     useEffect(() => {        
         if(name){
-            InternalApi.get(`api/post/${name}`)
+            InternalApi.get(`/api/post/${name}`)
             .then(res => {          
                 console.log(res)  
                 setPost([res.data])

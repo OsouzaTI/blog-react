@@ -12,7 +12,7 @@ export default () => {
 	const router = useRouter()	
 	const { user } = router.query; 
 	const [title, setTitle]  = useState('')
-	const [data, setData] = useState('')
+	const [data, setData] = useState([<></>])
     const setTextEdit = text => {
         setData(text)
         console.log(text)
