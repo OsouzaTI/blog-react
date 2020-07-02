@@ -28,7 +28,7 @@ function MenuComponent(props) {
                     <a>Sobre</a>
                 </MenuItem>
             </Link>
-            <Link href={'/logar'}>
+            <Link href={'/write/ozeias'}>
                 <MenuItem style={{
                     width: 40,
                     height: 40,

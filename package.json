@@ -12,8 +12,6 @@
     "axios": "^0.19.2",
     "axios-cache-adapter": "^2.5.0",
     "disqus-react": "^1.0.9",
-    "draft-js": "^0.11.6",
-    "jodit-react": "^1.0.49",
     "next": "^9.4.4",
     "react": "^16.13.1",
     "react-calendar": "^3.1.0",

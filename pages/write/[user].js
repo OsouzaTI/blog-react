@@ -1,9 +1,15 @@
 import React from 'react';
-import Editor from '../../src/components/Editor'
 import { useRouter } from 'next/router'
-
-export default (req, res) => {
+import Editor from '../../src/components/Editor'
+import {
+	ContentData
+} from '../../src/components/styles'
+export default () => {
 	const router = useRouter()
     const { user } = router.query;   
-	return <Editor nome={user}/>
+	return (
+		<ContentData>
+			<Editor nome={user}/>
+		</ContentData>
+	)
 }

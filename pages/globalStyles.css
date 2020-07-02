@@ -8,6 +8,7 @@ body {
 html{
     overflow-y: scroll;
     scrollbar-width: none;
+    min-height: 100vh;
 }
 html::-webkit-scrollbar {
     display: none;

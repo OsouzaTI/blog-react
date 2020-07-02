@@ -74,8 +74,8 @@ export const MenuItem = styled.div`
     border-radius: 5px;
     &:hover{
         transition: .3s;
-        opacity: .6;
-                
+        opacity: .6; 
+         
     }
     
     a {

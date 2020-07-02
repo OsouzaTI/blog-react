@@ -1,23 +1,19 @@
-import { useState } from "react";
+import React from 'react';
+import dynamic from 'next/dynamic'
+const SunEditor = dynamic(
+    () => import('suneditor-react'),
+    {
+        ssr: false
+    }
+)
 
-export default function EditorWrapper({ nome }) {
-    const [editorState, setEditorState] = useState('');    
-    const setText = (event) => {
-        setEditorState(event.target.value)
-        console.log(editorState)
-    } 
-
-    return (
-        <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center'
-        }}>
-        <h4>User: {nome}</h4>
-        <textarea onChange={setText} style={{width: '90vw', height: '60vh'}}>
-
-        </textarea>
-        </div>
+const Editor = props => {
+    return (            
+        <SunEditor 
+            height={'95vh'}
+            setDefaultStyle={"font-family: 'Slabo 27px', serif; font-size: 27px;"}    
+        />
     );
-}
+};
+export default Editor;
+

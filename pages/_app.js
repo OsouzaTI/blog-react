@@ -1,6 +1,6 @@
 import './globalStyles.css'
 import 'react-calendar/dist/Calendar.css';
-import 'draft-js/dist/Draft.css';
+import 'suneditor/dist/css/suneditor.min.css'; // Import Sun Editor's CSS File
 import MenuComponent from '../src/components/header/Menu'
 import {
     Grid
