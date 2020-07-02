@@ -75,7 +75,7 @@ export const MenuItem = styled.div`
     &:hover{
         transition: .3s;
         opacity: .6; 
-         
+
     }
     
     a {
@@ -91,9 +91,9 @@ export const MenuItem = styled.div`
 export const ContentData = styled.div`
     grid-area: CT;
     background-color: ${cores.BACKGROUND};
-    min-height: 100vh;
-
-
+    min-height: 100vh; 
+        
+    
 `;
 
 export const PostContainer = styled.div`

@@ -10,8 +10,9 @@ const SunEditor = dynamic(
 const Editor = props => {
     return (            
         <SunEditor 
-            height={'95vh'}
-            setDefaultStyle={"font-family: 'Slabo 27px', serif; font-size: 27px;"}    
+            height={'92vh'}
+            width={'45rem'}
+            setDefaultStyle={"font-family: 'Slabo 27px', serif; font-size: 20px;"}    
         />
     );
 };
