@@ -91,8 +91,8 @@ export const MenuItem = styled.div`
 export const ContentData = styled.div`
     grid-area: CT;
     background-color: ${cores.BACKGROUND};
-    min-height: 100vh; 
-        
+    min-height: 100vh;  
+             
     
 `;
 

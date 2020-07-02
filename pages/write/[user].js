@@ -8,7 +8,7 @@ import {
 } from '../../src/components/styles'
 
 export default () => {
-	const router = useRouter()
+	const router = useRouter()	
     const { user } = router.query;   
 	return (
 		<ContentData style={{
@@ -23,11 +23,23 @@ export default () => {
 				width: '45rem',
 				flexDirection: 'row',
 				justifyContent:'flex-end',
+				alignItems: 'center',
 				marginBottom: 2,
 			}}>
-			<MenuItem style={{borderBottomColor: 'red'}}>
-				<a>Publicar</a>
-			</MenuItem>
+				<input type={'text'} 
+					placeholder={'Título da postagem'}
+					style={{
+						marginRight: 10,
+						width: '100%',
+						
+						padding: 5,
+						borderRadius: 4,
+						fontSize: 16
+					}}
+				/>
+				<MenuItem style={{borderBottomColor: 'red'}}>
+					<a>Publicar</a>
+				</MenuItem>
 			</div>
             
 			<Editor nome={user}/>
