@@ -105,4 +105,5 @@ export const PostContainer = styled.div`
         text-align: center;
     }
     background-color: ${cores.CONTENT}
+    
 `;

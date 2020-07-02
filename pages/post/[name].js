@@ -14,10 +14,12 @@ const createPage = obj => {
     return obj.map((item, i)=>{
         return (
             <div key={i}>                        
-                <h1>{item.title}</h1>
+                <h1>{item.title.split('-').join(' ').replace('_', '.')}</h1>
                 <h5>{item.subtitle}</h5>
                 <h5>{item.data}</h5>
-                <div dangerouslySetInnerHTML={{__html: item.content}}></div>                        
+                <div dangerouslySetInnerHTML={{__html: item.content}}
+                     style={{wordWrap: 'break-word'}}
+                ></div>                        
             </div>
         )
     })

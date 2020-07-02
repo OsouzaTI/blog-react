@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import {
     GridContent,
@@ -12,24 +12,32 @@ import {
 } from './api/defaultAxios'
 import Calendar from 'react-calendar';
 
-const createLinks = links => {
-    if(links){
-        return links.map((item, i)=>(
-            <Link href={`/post/${item}`}>
-                <a>{item}</a>
-            </Link>
-        ))
-    }
-}
-
 function Home(props) {
-    const links = props.posts
-    console.log(links)
+    const [postagem, setPostagem ] = useState([])   
+    useEffect(() => {
+        const createLinks = links => {
+            const tempMap = links.map((item, i)=>(
+                <Link href={`/post/${item}`}>
+                    <a>{item}</a>
+                </Link>
+            ))
+            setPostagem(tempMap)
+        }
+                
+        InternalApi.get('api/post')
+        .then(res =>{           
+            const links = res.data.names;
+            createLinks(links)
+        })
+        .catch(err => console.log(err))       
+
+    }, [])
+
     return (
         <GridContent>
             <LinksArea>
                 <h4>Atividades Recentes</h4>
-                {createLinks(links)}
+                {postagem ? postagem : null}
             </LinksArea>
             <UpdatesArea>
                 <Calendar />
