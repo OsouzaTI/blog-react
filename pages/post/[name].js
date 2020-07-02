@@ -17,7 +17,7 @@ const createPage = obj => {
                 <h1>{item.title}</h1>
                 <h5>{item.subtitle}</h5>
                 <h5>{item.data}</h5>
-                <div>{item.content}</div>                        
+                <div dangerouslySetInnerHTML={{__html: item.content}}></div>                        
             </div>
         )
     })
@@ -42,8 +42,13 @@ export default function Post(props) {
  
     return (
         <ContentData>
-            <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
-                <PostContainer>
+            <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',                                
+            }}>
+                <PostContainer style={{minHeight: '60vh'}}>
                     {post ? createPage(post) : 'loading'}
                 </PostContainer>
             </div>
