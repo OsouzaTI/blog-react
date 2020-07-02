@@ -31,7 +31,8 @@ export default function Post(props) {
     useEffect(() => {        
         if(name){
             InternalApi.get(`api/post/${name}`)
-            .then(res => {            
+            .then(res => {          
+                console.log(res)  
                 setPost([res.data])
                 setArtigo(res.data.title)
             })

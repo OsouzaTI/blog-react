@@ -1,7 +1,7 @@
 import { setup } from 'axios-cache-adapter'
 
 const api = setup({
-    baseURL: 'https://blog-30d3b.firebaseio.com/',
+    baseURL: 'https://blog-30d3b.firebaseio.com',
     cache: {
         maxAge: 15 * 60 * 1000
     }

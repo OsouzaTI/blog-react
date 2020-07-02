@@ -5,8 +5,9 @@ export default (req, res) => {
     console.log(name)
     api.get(`posts/${name}.json`)
     .then((response)=>{
-        console.log(response.data)             
-        res.status(200).json(response.data)
+        const post = response.data; 
+        const postKey = Object.keys(post)[0]
+        res.status(200).json(post[postKey])      
     })  
     .catch((err)=>res.status(500).json({erro: err}))
 }
