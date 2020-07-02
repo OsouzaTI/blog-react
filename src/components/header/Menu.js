@@ -4,7 +4,7 @@ import {
     Menu, MenuItem
 } from '../styles'
 import Link from 'next/link'
-
+const cores = require('../../colors/colors.json')
 function MenuComponent(props) {
     return (
         <Menu>
@@ -26,6 +26,20 @@ function MenuComponent(props) {
             <Link href={'/about'}>
                 <MenuItem>
                     <a>Sobre</a>
+                </MenuItem>
+            </Link>
+            <Link href={'/logar'}>
+                <MenuItem style={{
+                    width: 40,
+                    height: 40,
+                    borderWidth: 5,                     
+                    borderRadius: '50%',
+                    borderColor: cores.BACKGROUND,
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                }}>
+                    <a>Logar</a>
                 </MenuItem>
             </Link>
         </Menu>

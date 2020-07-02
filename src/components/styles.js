@@ -58,19 +58,24 @@ export const Menu = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    /* BOX SHADOW */
+    box-shadow: 0px 10px 17px 0px rgba(0,0,0,0.75);
 `;
 
 export const MenuItem = styled.div`
 
     width: 120px;
-    background-color: ${cores.BACKGROUND};
+    border: 3px solid;
+    border-bottom-color: ${cores.BACKGROUND};
+    background-color: ${cores.BUTTOM};
     text-align: center;
     padding: 10px;
-    margin: 1px;
-
+    margin: 2px;
+    border-radius: 5px;
     &:hover{
         transition: .3s;
         opacity: .6;
+                
     }
     
     a {

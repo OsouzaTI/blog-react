@@ -1,5 +1,6 @@
 import './globalStyles.css'
 import 'react-calendar/dist/Calendar.css';
+import 'draft-js/dist/Draft.css';
 import MenuComponent from '../src/components/header/Menu'
 import {
     Grid
