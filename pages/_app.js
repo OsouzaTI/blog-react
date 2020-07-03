@@ -8,13 +8,29 @@ import LoadingScreen from '../src/components/LoadingScreen'
 import Head from 'next/head'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { store, persistor } from '../src/store/storeConfig'
-
+import { useRouter } from 'next/router'
 
 function MyApp({ Component, pageProps }) {
+    const router = useRouter();    
+    const [loading, setLoading] = useState(false);    
+    useEffect(() => {
+        const handleStart = (url) => (url !== router.pathname) && setLoading(true);
+        // handleComplete event was not firing
+        const handleComplete = (url) => (url === router.pathname) && setLoading(false);
+
+        router.events.on('routeChangeStart', handleStart)
+        router.events.on('routeChangeComplete', handleComplete)
+        router.events.on('routeChangeError', handleComplete)
+        return () => {
+            router.events.off('routeChangeStart', handleStart)
+            router.events.off('routeChangeComplete', handleComplete)
+            router.events.off('routeChangeError', handleComplete)
+        }
+    })
     return (
-        <>{!pageProps ? <LoadingScreen />
+        <>{loading ? <LoadingScreen />
             :
             <Grid>
                 <Head>
