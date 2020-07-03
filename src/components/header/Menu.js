@@ -30,8 +30,8 @@ function MenuComponent(props) {
             </Link>
             <Link href={'/write/ozeias'}>
                 <MenuItem style={{
-                    width: 40,
-                    height: 40,
+                    width: 55,
+                    height: 55,                    
                     borderWidth: 5,                     
                     borderRadius: '50%',
                     borderColor: cores.BACKGROUND,

@@ -8,20 +8,33 @@ import {
 } from '../../src/components/styles'
 import api from '../api/defaultAxios'
 import Modal from '../../src/components/Modal'
+import {Form} from "react-bootstrap";
+const options = require('./_options.json')
 export default () => {
 	const router = useRouter()	
 	const { user } = router.query; 
 	const [title, setTitle]  = useState('')
 	const [data, setData] = useState([<></>])
+	const [category, setCategory] = useState(options[0].option)
+
     const setTextEdit = text => {
         setData(text)
-        console.log(text)
-    }
+	}
+	
     const setTextTitle = ev => {
         setTitle(ev.target.value)
-        console.log(title)
-    }
+	}
+	
+    const _setCategory = ev => {
+		const Categoria = ev.target.value.split(' ').join('-').toLocaleLowerCase()
+        setCategory(Categoria)
+	}
+	
 	const enviarPost = () => {
+		if(category === 'Selecione'){
+			console.log('Selecione a categoria');
+			return;
+		}
 		const titulo = title.split(' ').join('-').toLocaleLowerCase()
 		const post = {
 			"content": data,
@@ -29,7 +42,8 @@ export default () => {
 			"subtitle":"humm",
 			"title": titulo
 		}
-		api.post(`/posts/${titulo}.json`, {...post})
+		console.log(post)
+		api.post(`/posts/${category}/${titulo}.json`, {...post})
 		.then(res => {			
 			console.log('Resolvido')
 		})
@@ -47,7 +61,8 @@ export default () => {
 			paddingBottom: 10,
 			paddingTop: 10,
 		}}>
-			<div style={{display: 'flex',
+			<div style={{
+				display: 'flex',
 				width: '45rem',
 				flexDirection: 'row',
 				justifyContent:'flex-end',
@@ -57,15 +72,11 @@ export default () => {
 				<input type={'text'} 
 					onChange={setTextTitle}
 					placeholder={'Título da postagem'}
-					style={{
-						marginRight: 10,
-						width: '100%',
-						
-						padding: 5,
-						borderRadius: 4,
-						fontSize: 16
-					}}
+					style={styleInput}
 				/>
+				<Form.Control as="select" custom onChange={_setCategory}>
+					{options ? options.map((item, i)=><option key={i} value={item.option}>{item.option}</option>):null}
+				</Form.Control>
 				<Modal title={'Upload Image'}/>
 				<MenuItem style={{borderBottomColor: 'red'}} onClick={enviarPost}>
 					<a>Publicar</a>
@@ -75,4 +86,12 @@ export default () => {
 			<Editor nome={user} callback={setTextEdit}/>
 		</ContentData>
 	)
+}
+
+const styleInput = {
+	marginRight: 10,
+	width: '90%',						
+	padding: 5,
+	borderRadius: 4,
+	fontSize: 16
 }

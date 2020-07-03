@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 import {Modal, Button, Form} from "react-bootstrap";
+import { 
+    MenuItem
+} from './styles'
 import axios from 'axios'
 
 function ModalComponent(props){
@@ -59,10 +62,15 @@ function ModalComponent(props){
 
     return (
         <>
-            <Button variant={'success'}
-                style={{height: 50, padding: 0, color:'white'}} onClick={handleShow}>
-                {props.title}
-            </Button>
+            <MenuItem style={{
+                borderBottomColor:'red',
+                width: 310,
+                padding: 5,
+                height: 50,
+                lineHeight:2
+            }} onClick={handleShow}>
+                <a>{props.title}</a>
+            </MenuItem>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Upload Image</Modal.Title>

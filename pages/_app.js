@@ -7,6 +7,12 @@ import {
     Grid
 } from '../src/components/styles'
 import Head from 'next/head'
+import { Provider } from 'react-redux'
+import { PersistGate } from 'redux-persist/integration/react'
+import React from 'react'
+import { store, persistor } from '../src/store/storeConfig'
+
+
 function MyApp({ Component, pageProps }) {
     return (
         <Grid>
@@ -16,7 +22,11 @@ function MyApp({ Component, pageProps }) {
                 <link rel={"shortcut icon"} href={"/favicon2.png"} />
             </Head>
             <MenuComponent />
-            <Component {...pageProps} />
+            <Provider store={store}>
+                <PersistGate loading={null} persistor={persistor}>
+                    <Component {...pageProps} />                
+                </PersistGate>
+            </Provider>
         </Grid>
     )
   }

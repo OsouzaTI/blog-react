@@ -11,7 +11,7 @@ export const Grid = styled.div`
 
 export const GridContent = styled.div`
     display: grid;
-    grid-auto-columns: 240px auto;
+    grid-auto-columns: 300px auto;
     grid-template-rows: 300px auto;
     grid-template-areas: 
         'UA DT'
@@ -38,7 +38,15 @@ export const LinksArea = styled.div`
         color: red;
         margin-bottom: 5px;
     }
-    font-size: 18px;
+
+    a:hover {
+        transition: .2s;
+        font-size: 16px;
+        border-bottom: 1px solid red;
+    }
+    font-size: 12px;  
+      
+    
 `;
 export const UpdatesArea = styled.div`
     grid-area: UA;
@@ -48,7 +56,9 @@ export const Data = styled.div`
     grid-area: DT;
     background-color: ${cores.CONTENT};
     border-left: thin solid rgba(0, 0, 0, .2);
-    border-width: .1;    
+    border-width: .1;   
+    
+     
 `;
 
 
@@ -104,6 +114,17 @@ export const PostContainer = styled.div`
     h1, h5 {
         text-align: center;
     }
-    background-color: ${cores.CONTENT}
-    
+    background-color: ${cores.CONTENT}; 
+
+`;
+
+export const Span = styled.span`
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    text-align: center;
+    margin-right: 5px;
+    background-color: ${cores.BACKGROUND};
+    color: white;
+    border-radius: 15px;
 `;
