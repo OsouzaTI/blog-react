@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 const cores = require('../colors/colors.json')
 export const Grid = styled.div`
     display: grid;
@@ -7,6 +7,7 @@ export const Grid = styled.div`
         'MN'
         'CT';
     min-height: 100vh;
+
 `;
 
 export const GridContent = styled.div`
@@ -16,6 +17,21 @@ export const GridContent = styled.div`
     grid-template-areas: 
         'UA DT'
         'LA DT';
+`;
+
+export const GridPosts = styled.div`
+    display: grid;
+    grid-auto-columns: auto;
+    grid-template-rows: auto;
+    grid-template-areas: 
+        'PT PT PT';
+    padding: 10px;
+`;
+
+export const ContainerGridPosts = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 `;
 
 export const LinksArea = styled.div`
@@ -127,4 +143,44 @@ export const Span = styled.span`
     background-color: ${cores.BACKGROUND};
     color: white;
     border-radius: 15px;
+`;
+
+export const CardAnimation = styled.div`
+    
+    border-radius: 5px;
+    &:hover{
+        transition: .3s;
+        background-color: #e5e5e5;
+        transform: scale(1.1);
+        margin: 20px;           
+    }    
+
+`;
+
+const fadeIn = keyframes`
+
+    0%, 100% { opacity: 0; }
+    20%, 80% { opacity: 1; }
+
+`;
+
+export const AlertMessage = styled.div`
+
+    display: flex;
+    position: absolute;
+    top: 10px;left: 0px;
+    /* background-color: red; */
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    animation: ${fadeIn}  3s linear forwards;
+
+`;
+
+export const LoadingScreen = styled.div`
+
+    width: 100vw;
+    height: 100vh;
+    background-color: ${cores.BACKGROUND}
+
 `;

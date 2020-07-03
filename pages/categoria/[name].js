@@ -3,7 +3,9 @@ import { connect } from 'react-redux'
 import { useRouter } from 'next/router'
 import {
     ContentData,
-    PostContainer
+    PostContainer,
+    GridPosts,
+    ContainerGridPosts
 } from '../../src/components/styles'
 import Cards from '../../src/components/Cards'
 
@@ -22,21 +24,18 @@ function Categoria(props) {
                     return (
                     <ContentData>
                     {
-                        <div style={{
-                            display: 'flex',
-                            flexDirection: 'row',
-                            justifyContent: 'center',
-                            paddingTop:10,
-                        }}>
-                        {
-                            Object.keys(categoria).map((itemKey)=>{
-                                const postObject = getPost(categoria[itemKey])                        
-                                return <Cards   title={itemKey}
-                                                subtitle={postObject.subtitle}
-                                                link={`/post/${name}/${postObject.title}`}/>                
-                            })
-                        }
-                        </div>
+                        <ContainerGridPosts>
+                        <GridPosts>
+                            {
+                                Object.keys(categoria).map((itemKey)=>{
+                                    const postObject = getPost(categoria[itemKey])                        
+                                    return <Cards   title={itemKey}
+                                                    subtitle={postObject.subtitle}
+                                                    link={`/post/${name}/${postObject.title}`}/>                
+                                })
+                            }
+                        </GridPosts>
+                        </ContainerGridPosts>
                     }                   
                     </ContentData>
                     )

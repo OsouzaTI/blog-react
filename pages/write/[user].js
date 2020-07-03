@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router'
 import Editor from '../../src/components/Editor'
+import Alert from '../../src/components/Alerts'
 import {
 	ContentData,
 	Menu,
@@ -16,7 +17,8 @@ export default () => {
 	const [title, setTitle]  = useState('')
 	const [data, setData] = useState([<></>])
 	const [category, setCategory] = useState(options[0].option)
-
+	const [showAlert, setShowAlert] = useState(false)
+	const [messageAlert, setMessageAlert] = useState({type:'', message:''})
     const setTextEdit = text => {
         setData(text)
 	}
@@ -30,6 +32,17 @@ export default () => {
         setCategory(Categoria)
 	}
 	
+	const alert = (type, message) => {
+		setShowAlert(true)
+		setMessageAlert({type: type, message: message})
+
+		setTimeout(() => {
+			setShowAlert(false)
+			setMessageAlert({type:type, message:message})
+		}, 5000);
+
+	}
+
 	const enviarPost = () => {
 		if(category === 'Selecione'){
 			console.log('Selecione a categoria');
@@ -46,10 +59,11 @@ export default () => {
 		api.post(`/posts/${category}/${titulo}.json`, {...post})
 		.then(res => {			
 			console.log('Resolvido')
+			alert('success', 'Postado com sucesso')
 		})
 		.catch(err => {
 			console.log('Erro no post ->'+`${err}`)
-
+			alert('danger', 'Erro ao postar')
 		})
 	} 
 	return (
@@ -69,6 +83,7 @@ export default () => {
 				alignItems: 'center',
 				marginBottom: 2,
 			}}>
+				{showAlert ? <Alert data={messageAlert}/> : null}
 				<input type={'text'} 
 					onChange={setTextTitle}
 					placeholder={'Título da postagem'}

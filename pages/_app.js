@@ -4,7 +4,8 @@ import 'suneditor/dist/css/suneditor.min.css';// Import Sun Editor's CSS File
 import "bootstrap/dist/css/bootstrap.min.css";
 import MenuComponent from '../src/components/header/Menu'
 import {
-    Grid
+    Grid,
+    LoadingScreen
 } from '../src/components/styles'
 import Head from 'next/head'
 import { Provider } from 'react-redux'
@@ -23,7 +24,7 @@ function MyApp({ Component, pageProps }) {
             </Head>
             <MenuComponent />
             <Provider store={store}>
-                <PersistGate loading={null} persistor={persistor}>
+                <PersistGate loading={<LoadingScreen />} persistor={persistor}>
                     <Component {...pageProps} />                
                 </PersistGate>
             </Provider>
