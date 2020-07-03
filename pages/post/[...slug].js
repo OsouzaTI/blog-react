@@ -10,12 +10,12 @@ import {
 } from '../../src/components/styles'
 import Comments from './Disq';
 import { getParams } from '../api/post/[...slug]'
-
+const formaterString = string => string.split('-').join(' ').replace('_', '.')
 const createPage = obj => {
     return Object.keys(obj).map((item, i)=>{        
         return (
             <div key={i}>                        
-                <h1>{obj[item].title.split('-').join(' ').replace('_', '.')}</h1>
+                <h1>{formaterString(obj[item].title)}</h1>
                 <h5>{obj[item].subtitle}</h5>
                 <h5>{obj[item].data}</h5>
                 <div dangerouslySetInnerHTML={{__html: obj[item].content}}
@@ -39,14 +39,14 @@ function Post(props) {
         })
     }
     return (
-        <ContentData>
+        <ContentData style={{backgroundColor: 'white'}}>
             <div style={{
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
                 alignItems: 'center',                                
             }}>
-                <PostContainer style={{minHeight: '60vh'}}>
+                <PostContainer style={{minHeight: '100vh'}}>
                     {post ? createPage(post) : 'loading'}
                 </PostContainer>
             </div>

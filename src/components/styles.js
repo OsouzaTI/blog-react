@@ -131,7 +131,14 @@ export const PostContainer = styled.div`
         text-align: center;
     }
     background-color: ${cores.CONTENT}; 
-
+    img{
+        margin: auto;
+        display: block;
+    }
+    img:hover{
+        transition: .2s;
+        transform: scale(1.1);
+    }
 `;
 
 export const Span = styled.span`
@@ -149,10 +156,10 @@ export const CardAnimation = styled.div`
     
     border-radius: 5px;
     &:hover{
-        transition: .3s;
+        transition: 1s;
         background-color: #e5e5e5;
         transform: scale(1.1);
-        margin: 20px;           
+        margin: 10px;           
     }    
 
 `;
