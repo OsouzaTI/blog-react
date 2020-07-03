@@ -43,7 +43,7 @@ export const LinksArea = styled.div`
     align-items: center;
     border-bottom: thin solid rgba(0, 0, 0, .2);
     border-width: .1;  
-
+    padding: 10px;
     overflow-y: scroll;
     scrollbar-width: none;
     ::-webkit-scrollbar {
@@ -178,9 +178,11 @@ export const AlertMessage = styled.div`
 `;
 
 export const LoadingScreen = styled.div`
-
     width: 100vw;
     height: 100vh;
+    display: flex;
+    justify-content:center;
+    align-items:center;
     background-color: ${cores.BACKGROUND}
 
 `;

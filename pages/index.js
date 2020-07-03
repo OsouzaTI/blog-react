@@ -39,7 +39,7 @@ function Home(props) {
     return (
         <GridContent>
             <LinksArea>
-                <h4>Atividades Recentes</h4>
+                <h4>Categorias</h4>
                 {props.categorias ? createLinks(props.categorias) : null}
             </LinksArea>
             <UpdatesArea>
