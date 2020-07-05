@@ -5,9 +5,12 @@ import Alert from '../../src/components/Alerts'
 import {
 	ContentData,
 	Menu,
-	MenuItem
+	MenuItem,
+	GridWrite
 } from '../../src/components/styles'
-import api from '../api/defaultAxios'
+import useSWR from 'swr'
+import fetcher from '../api/defaultAxios'
+import axios from 'axios'
 import Modal from '../../src/components/Modal'
 import {Form} from "react-bootstrap";
 const options = require('./_options.json')
@@ -15,16 +18,20 @@ export default () => {
 	const router = useRouter()	
 	const { user } = router.query; 
 	const [title, setTitle]  = useState('')
-	const [data, setData] = useState([<></>])
+	const [subtitle, setSubTitle]  = useState('')
+	const [date, setDate] = useState([<></>])
 	const [category, setCategory] = useState(options[0].option)
 	const [showAlert, setShowAlert] = useState(false)
 	const [messageAlert, setMessageAlert] = useState({type:'', message:''})
     const setTextEdit = text => {
-        setData(text)
+        setDate(text)
 	}
 	
     const setTextTitle = ev => {
         setTitle(ev.target.value)
+	}
+    const setTextSubTitle = ev => {
+        setSubTitle(ev.target.value)
 	}
 	
     const _setCategory = ev => {
@@ -48,18 +55,40 @@ export default () => {
 			console.log('Selecione a categoria');
 			return;
 		}
-		const titulo = title.split(' ').join('-').toLocaleLowerCase()
+		
 		const post = {
-			"content": data,
-			"data":"00/00/2020",
-			"subtitle":"humm",
-			"title": titulo
+			category: category,
+			content: date,
+			date:`${new Date().toISOString()}`,
+			subtitle:subtitle,
+			title: title
+		}	
+		const createPost = `
+        mutation{
+			createPost(
+				category:"${post.category}"
+				title:"${post.title}",
+				subtitle:"${post.subtitle}",
+				date:"${post.date}",
+				content:"${post.content}"
+			){
+				title
+				subtitle
+				data
+				content
+			}
 		}
-		console.log(post)
-		api.post(`/posts/${category}/${titulo}.json`, {...post})
-		.then(res => {			
-			console.log('Resolvido')
-			alert('success', 'Postado com sucesso')
+		`;
+		// const { data, error } = useSWR(createPost, fetcher)	
+		axios({
+			url: '/api/graphql',
+			method: 'post',
+			data: {
+			  query: createPost
+			}
+		}).then((result) => {			
+		 	alert('success', 'Postado com sucesso')
+			console.log(result.data)
 		})
 		.catch(err => {
 			console.log('Erro no post ->'+`${err}`)
@@ -71,33 +100,35 @@ export default () => {
 			display: 'flex',
 			flexDirection: 'column',
 			justifyContent: 'center',
-			alignItems: 'center',
+			alignItems: 'flex-end',
 			paddingBottom: 10,
 			paddingTop: 10,
 		}}>
-			<div style={{
-				display: 'flex',
-				width: '45rem',
-				flexDirection: 'row',
-				justifyContent:'flex-end',
-				alignItems: 'center',
-				marginBottom: 2,
-			}}>
+			<GridWrite>
 				{showAlert ? <Alert data={messageAlert}/> : null}
 				<input type={'text'} 
 					onChange={setTextTitle}
 					placeholder={'Título da postagem'}
 					style={styleInput}
 				/>
+				<input type={'text'} 
+					onChange={setTextSubTitle}
+					placeholder={'Sub-título'}
+					style={styleInput}
+				/>
 				<Form.Control as="select" custom onChange={_setCategory}>
 					{options ? options.map((item, i)=><option key={i} value={item.option}>{item.option}</option>):null}
 				</Form.Control>
+			</GridWrite>
+			<div style={{
+				display:'flex',
+				flexDirection:'row',
+			}}>
 				<Modal title={'Upload Image'}/>
 				<MenuItem style={{borderBottomColor: 'red'}} onClick={enviarPost}>
 					<a>Publicar</a>
-				</MenuItem>
-			</div>
-            
+				</MenuItem>       
+			</div>     
 			<Editor nome={user} callback={setTextEdit}/>
 		</ContentData>
 	)
@@ -108,5 +139,5 @@ const styleInput = {
 	width: '90%',						
 	padding: 5,
 	borderRadius: 4,
-	fontSize: 16
+	fontSize: 16,
 }

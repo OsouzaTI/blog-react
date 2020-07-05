@@ -61,10 +61,9 @@ function ModalComponent(props){
     }
 
     return (
-        <>
+        <div>
             <MenuItem style={{
-                borderBottomColor:'red',
-                width: 310,
+                borderBottomColor:'red',                
                 padding: 5,
                 height: 50,
                 lineHeight:2
@@ -116,7 +115,7 @@ function ModalComponent(props){
                 </Button>
                 </Modal.Footer>
             </Modal>
-        </>
+        </div>
     );
 };
 

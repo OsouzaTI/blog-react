@@ -25,7 +25,16 @@ export const GridPosts = styled.div`
     grid-template-rows: auto;
     grid-template-areas: 
         'PT PT PT';
-    padding: 10px;
+    padding: 10px;       
+`;
+
+export const GridWrite = styled.div`
+      display: grid;
+    grid-auto-columns: auto;
+    grid-template-rows: auto;
+    grid-template-areas: 
+        'PT PT PT';
+    padding: 10px;  
 `;
 
 export const ContainerGridPosts = styled.div`
@@ -150,6 +159,8 @@ export const Span = styled.span`
     background-color: ${cores.BACKGROUND};
     color: white;
     border-radius: 15px;
+    
+
 `;
 
 export const CardAnimation = styled.div`

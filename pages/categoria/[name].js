@@ -1,5 +1,4 @@
-import React from 'react'
-import { connect } from 'react-redux'
+import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import {
     ContentData,
@@ -9,48 +8,39 @@ import {
 } from '../../src/components/styles'
 import Cards from '../../src/components/Cards'
 
+import useSWR from 'swr'
+import { fetcher } from '../api/defaultAxios'
+
 function Categoria(props) {
     const router = useRouter()
-    const { name } = router.query;
-    const getPost = (categoriaObject) => {
-        return categoriaObject[Object.keys(categoriaObject)[0]]
-    }
+    const { name } = router.query;    
+    const getPosts = `
+        {
+            posts(category: "${name}"){
+                title
+                subtitle
+                index
+            }
+        }
+    `;
+    const { data, error } = useSWR(getPosts, fetcher)      
     return (
         <div>
-            {props.posts && name ?
-                props.posts.map((item)=>{
-                    const categoria = item[name]
-                    console.log(categoria)
-                    return (
-                    <ContentData>
-                    {
-                        <ContainerGridPosts>
-                        <GridPosts>
-                            {
-                                Object.keys(categoria).map((itemKey)=>{
-                                    const postObject = getPost(categoria[itemKey])                        
-                                    return <Cards   title={itemKey}
-                                                    subtitle={postObject.subtitle}
-                                                    link={`/post/${name}/${postObject.title}`}/>                
-                                })
-                            }
-                        </GridPosts>
-                        </ContainerGridPosts>
-                    }                   
-                    </ContentData>
-                    )
-                })
-                :null
-            }
+            <ContentData>
+                <ContainerGridPosts>
+                <GridPosts>
+                    {data ? 
+                        data.posts.map((item, i)=>
+                            <Cards  title={item.title}
+                                subtitle={item.subtitle}
+                                link={`/post/${item.index}`}/>                                        )
+                        :null
+                    }
+                </GridPosts>
+                </ContainerGridPosts>               
+            </ContentData>
         </div>
     )
 }
 
-
-const mapDispatchToProps = ({ posts }) => {
-    return {
-        posts: posts.posts
-    }
-}
-
-export default connect(mapDispatchToProps, null)(Categoria)
+export default Categoria

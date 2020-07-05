@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import { connect } from 'react-redux'
-import { fetchPosts } from '../src/store/actions/posts'
+import React from 'react'
 import {
     GridContent,
     LinksArea,
@@ -11,36 +9,45 @@ import {
 import Link from 'next/link'
 import Calendar from 'react-calendar';
 
-function Home(props) {
+import useSWR from 'swr'
+import { fetcher } from '../pages/api/defaultAxios'
 
-    useEffect(() => {
-        console.log('Foi buscado os posts')
-        props.onFetchPosts()
-    }, [])
-
-    const createLinks = links => {
-        return links.map((item, i)=>(
-            <Link href={`/categoria/${item.name}`}>                
-                <div style={{
-                    cursor: 'pointer',
-                    display:'flex',
-                    flexDirection: 'row',  
-                    width: '100%',
-                    justifyContent: 'space-between'}}>
-                <a style={{padding: 5}}>
-                    {item.name.split('-').join(' ').replace('_','.')}
-                </a>
-                <Span>{item.length}</Span>
-                </div>
-            </Link>
-        ))
+const getPosts = `
+    query{
+        posts(category: "null"){
+            category
+        }
     }
+`;
 
+const containerLink = {
+    cursor: 'pointer',
+    display:'flex',
+    flexDirection: 'row',  
+    width: '100%',
+    justifyContent: 'space-between'
+}
+
+const createLinks = categorys => {
+    return categorys.map((item, i)=>(
+        <Link href={`/categoria/${item.category}`}>                
+            <div style={containerLink}>
+            <a style={{padding: 5}}>
+                {item.category.split('-').join(' ').replace('_','.')}
+            </a>            
+            </div>
+        </Link>
+    ))
+}
+
+function Home() {
+    const { data, error } = useSWR(getPosts, fetcher)    
+    console.log(data)
     return (
         <GridContent>
             <LinksArea>
-                <h4>Categorias</h4>
-                {props.categorias ? createLinks(props.categorias) : null}
+                <h4>Categorias</h4>      
+                {data ? createLinks(data.posts): null}          
             </LinksArea>
             <UpdatesArea>
                 <Calendar />
@@ -50,15 +57,4 @@ function Home(props) {
     )
 }
 
-const mapStateToProps = ({ posts }) => {
-    return {
-        categorias: posts.categorias
-    }
-}
-const mapDispatchToProps = dispatch => {
-    return {
-        onFetchPosts: () => dispatch(fetchPosts())
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
+export default Home
