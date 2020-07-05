@@ -14,6 +14,7 @@ const typeDefs = gql`
         subtitle: String!
         content: String!
         index: String!
+
     }
 
 
