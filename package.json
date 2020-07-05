@@ -22,7 +22,10 @@
     "react-bootstrap": "^1.0.1",
     "react-calendar": "^3.1.0",
     "react-dom": "^16.13.1",
+<<<<<<< HEAD
     "react-icons": "^3.10.0",
+=======
+>>>>>>> 009b74e0eb4534e2ae2dcd961d162dd6c716dde5
     "styled-components": "^5.1.1",
     "suneditor-react": "^2.12.4",
     "swr": "^0.2.3",

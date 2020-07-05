@@ -1,2 +1,6 @@
 .next
+<<<<<<< HEAD
+=======
+.env
+>>>>>>> 009b74e0eb4534e2ae2dcd961d162dd6c716dde5
 /node_modules

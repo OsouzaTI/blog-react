@@ -31,7 +31,10 @@ export default () => {
         setTitle(ev.target.value)
 	}
     const setTextSubTitle = ev => {
+<<<<<<< HEAD
 		console.log(ev.target.value)
+=======
+>>>>>>> 009b74e0eb4534e2ae2dcd961d162dd6c716dde5
         setSubTitle(ev.target.value)
 	}
 	
@@ -59,7 +62,11 @@ export default () => {
 		
 		const post = {
 			category: category,
+<<<<<<< HEAD
 			content: date.split('"').join("'"),
+=======
+			content: date,
+>>>>>>> 009b74e0eb4534e2ae2dcd961d162dd6c716dde5
 			date:`${new Date().toISOString()}`,
 			subtitle:subtitle,
 			title: title
@@ -73,10 +80,16 @@ export default () => {
 				date:"${post.date}",
 				content:"${post.content}"
 			){
+<<<<<<< HEAD
 				category
 				title
 				subtitle
 				date
+=======
+				title
+				subtitle
+				data
+>>>>>>> 009b74e0eb4534e2ae2dcd961d162dd6c716dde5
 				content
 			}
 		}
@@ -102,7 +115,11 @@ export default () => {
 			display: 'flex',
 			flexDirection: 'column',
 			justifyContent: 'center',
+<<<<<<< HEAD
 			alignItems: 'center',
+=======
+			alignItems: 'flex-end',
+>>>>>>> 009b74e0eb4534e2ae2dcd961d162dd6c716dde5
 			paddingBottom: 10,
 			paddingTop: 10,
 		}}>
@@ -125,9 +142,12 @@ export default () => {
 			<div style={{
 				display:'flex',
 				flexDirection:'row',
+<<<<<<< HEAD
 				width: '45rem',
 				// backgroundColor:'red',
 				justifyContent:'flex-end',
+=======
+>>>>>>> 009b74e0eb4534e2ae2dcd961d162dd6c716dde5
 			}}>
 				<Modal title={'Upload Image'}/>
 				<MenuItem style={{borderBottomColor: 'red'}} onClick={enviarPost}>

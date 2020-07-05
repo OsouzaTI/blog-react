@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from 'react'
 import {FaFileCode} from 'react-icons/fa'
 import {
@@ -111,6 +112,53 @@ function MenuComponent(props) {
                 </Form> */}
             </Navbar.Collapse>
         </Navbar>
+=======
+import React from 'react'
+
+import {
+    Menu, MenuItem
+} from '../styles'
+import Link from 'next/link'
+const cores = require('../../colors/colors.json')
+function MenuComponent(props) {
+    return (
+        <Menu>
+            <Link href={'/'}>
+                <MenuItem>
+                    <a>Home</a>
+                </MenuItem>
+            </Link>
+            <Link href={'/'}>
+                <MenuItem>
+                    <a>Recentes</a>
+                </MenuItem>
+            </Link>
+            <Link href={'/'}>
+                <MenuItem>
+                    <a>Contato</a>
+                </MenuItem>
+            </Link>
+            <Link href={'/about'}>
+                <MenuItem>
+                    <a>Sobre</a>
+                </MenuItem>
+            </Link>
+            <Link href={'/write/ozeias'}>
+                <MenuItem style={{
+                    width: 55,
+                    height: 55,                    
+                    borderWidth: 5,                     
+                    borderRadius: '50%',
+                    borderColor: cores.BACKGROUND,
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                }}>
+                    <a>Logar</a>
+                </MenuItem>
+            </Link>
+        </Menu>
+>>>>>>> 009b74e0eb4534e2ae2dcd961d162dd6c716dde5
     )
 }
 

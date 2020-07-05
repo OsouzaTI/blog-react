@@ -2,7 +2,10 @@ import styled, { keyframes } from 'styled-components'
 const cores = require('../colors/colors.json')
 export const Grid = styled.div`
     display: grid;
+<<<<<<< HEAD
     grid-template-columns: auto;
+=======
+>>>>>>> 009b74e0eb4534e2ae2dcd961d162dd6c716dde5
     grid-template-rows: 100px auto;
     grid-template-areas: 
         'MN'
@@ -13,10 +16,18 @@ export const Grid = styled.div`
 
 export const GridContent = styled.div`
     display: grid;
+<<<<<<< HEAD
     grid-auto-columns: auto;
     grid-template-rows: auto;
     grid-template-areas: 
         'DT';        
+=======
+    grid-auto-columns: 300px auto;
+    grid-template-rows: 300px auto;
+    grid-template-areas: 
+        'UA DT'
+        'LA DT';
+>>>>>>> 009b74e0eb4534e2ae2dcd961d162dd6c716dde5
 `;
 
 export const GridPosts = styled.div`
@@ -25,12 +36,20 @@ export const GridPosts = styled.div`
     grid-template-rows: auto;
     grid-template-areas: 
         'PT PT PT';
+<<<<<<< HEAD
     padding: 10px;  
     max-width: 60vw;         
 `;
 
 export const GridWrite = styled.div`
     display: grid;
+=======
+    padding: 10px;       
+`;
+
+export const GridWrite = styled.div`
+      display: grid;
+>>>>>>> 009b74e0eb4534e2ae2dcd961d162dd6c716dde5
     grid-auto-columns: auto;
     grid-template-rows: auto;
     grid-template-areas: 
@@ -96,11 +115,15 @@ export const Menu = styled.div`
     align-items: center;
     /* BOX SHADOW */
     box-shadow: 0px 10px 17px 0px rgba(0,0,0,0.75);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 009b74e0eb4534e2ae2dcd961d162dd6c716dde5
 `;
 
 export const MenuItem = styled.div`
 
+<<<<<<< HEAD
     width: 90px;
     border: 3px solid;
     background-color: ${cores.BUTTOM};
@@ -110,6 +133,20 @@ export const MenuItem = styled.div`
         transition: .3s;
         opacity: .6;         
         
+=======
+    width: 120px;
+    border: 3px solid;
+    border-bottom-color: ${cores.BACKGROUND};
+    background-color: ${cores.BUTTOM};
+    text-align: center;
+    padding: 10px;
+    margin: 2px;
+    border-radius: 5px;
+    &:hover{
+        transition: .3s;
+        opacity: .6; 
+
+>>>>>>> 009b74e0eb4534e2ae2dcd961d162dd6c716dde5
     }
     
     a {
@@ -122,6 +159,7 @@ export const MenuItem = styled.div`
 
 `;
 
+<<<<<<< HEAD
 export const MenuItemDropdown = styled.div`
 
     width: 100px;
@@ -133,6 +171,8 @@ export const MenuItemDropdown = styled.div`
 
 `;
 
+=======
+>>>>>>> 009b74e0eb4534e2ae2dcd961d162dd6c716dde5
 export const ContentData = styled.div`
     grid-area: CT;
     background-color: ${cores.BACKGROUND};
@@ -140,19 +180,32 @@ export const ContentData = styled.div`
     
 `;
 
+<<<<<<< HEAD
 export const PostContainer = styled.div` 
     max-width: 80%;
     min-height: 100%;
     text-align: justify;
+=======
+export const PostContainer = styled.div`
+    width: 50rem;
+    min-height: 100%;
+    text-align: justify;
+    padding: 50px 20px;
+>>>>>>> 009b74e0eb4534e2ae2dcd961d162dd6c716dde5
     margin: 10px 0px;
     h1, h5 {
         text-align: center;
     }
     background-color: ${cores.CONTENT}; 
     img{
+<<<<<<< HEAD
         width: 100%;
         margin: auto;
         margin-bottom: 10px;        
+=======
+        margin: auto;
+        display: block;
+>>>>>>> 009b74e0eb4534e2ae2dcd961d162dd6c716dde5
     }
     img:hover{
         transition: .2s;

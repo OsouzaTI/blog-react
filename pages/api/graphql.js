@@ -5,6 +5,7 @@ const uuid = require('uuid-v4')
 
 const typeDefs = gql`
 
+<<<<<<< HEAD
     type Category {
         category: String!
     }
@@ -20,6 +21,12 @@ const typeDefs = gql`
         id: ID!
         category: String!
         date: String!
+=======
+    type Post {
+        id: ID!
+        category: String!
+        data: String!
+>>>>>>> 009b74e0eb4534e2ae2dcd961d162dd6c716dde5
         author: String!
         title: String!
         subtitle: String!
@@ -32,8 +39,11 @@ const typeDefs = gql`
     type Query {
         posts(category: String!): [Post]!,
         post(index: String!): Post,
+<<<<<<< HEAD
         user(user: String!, password: String!): [User]!,
         category: [Category]!,
+=======
+>>>>>>> 009b74e0eb4534e2ae2dcd961d162dd6c716dde5
     }
     
     type Mutation {
@@ -43,9 +53,13 @@ const typeDefs = gql`
             title: String!,
             subtitle: String!,
             content: String!
+<<<<<<< HEAD
         ): Post,
         createCategory(category: String!): Category,
         createUser(user: String!, password: String!): User,
+=======
+        ): Post
+>>>>>>> 009b74e0eb4534e2ae2dcd961d162dd6c716dde5
     }
 
     schema {
@@ -59,11 +73,21 @@ const resolvers = {
     Query: {
         posts(_parent, _args, _context, _info) {
             const isObjectEmpty = obj => obj.category === 'null'
+<<<<<<< HEAD
             const filter = isObjectEmpty(_args) ? {} : _args;            
             return _context.db
             .collection('posts')
             .find(filter).toArray()
             .then(res => {                
+=======
+            const filter = isObjectEmpty(_args) ? {} : _args;
+            console.log(filter)
+            return _context.db
+            .collection('posts')
+            .find(filter).toArray()
+            .then(res => {
+                console.log(res)
+>>>>>>> 009b74e0eb4534e2ae2dcd961d162dd6c716dde5
                 return res
             })
         },
@@ -72,6 +96,7 @@ const resolvers = {
             .collection('posts')
             .findOne(_args)
             .then(res => {
+<<<<<<< HEAD
                 return res
             })
         },
@@ -88,6 +113,12 @@ const resolvers = {
             .find(_args).toArray()
             .then(res => res)
         },
+=======
+                console.log(res)
+                return res
+            })
+        },
+>>>>>>> 009b74e0eb4534e2ae2dcd961d162dd6c716dde5
     },
     Mutation: {
         createPost: async(_parent, _args, _context, _info)=>{
@@ -97,6 +128,7 @@ const resolvers = {
                         .collection('posts')
                         .insert(objIdentifier)
             console.log('Postado com sucesso!')
+<<<<<<< HEAD
         },
         createCategory: async(_parent, _args, _context, _info)=>{
             await _context.db
@@ -113,6 +145,9 @@ const resolvers = {
             console.log('Postado com sucesso!')
         },
 
+=======
+        }
+>>>>>>> 009b74e0eb4534e2ae2dcd961d162dd6c716dde5
     }
 }
 
