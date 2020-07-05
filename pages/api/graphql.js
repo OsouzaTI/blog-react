@@ -8,7 +8,7 @@ const typeDefs = gql`
     type Post {
         id: ID!
         category: String!
-        data: String!
+        date: String!
         author: String!
         title: String!
         subtitle: String!
@@ -59,7 +59,6 @@ const resolvers = {
             .collection('posts')
             .findOne(_args)
             .then(res => {
-                console.log(res)
                 return res
             })
         },

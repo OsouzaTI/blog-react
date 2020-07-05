@@ -15,11 +15,12 @@ const DateFormat = stringDate => {
     return `${date.toLocaleDateString()}`
 }
 const createPage = obj => {
+    console.log(obj)
     return (
         <div>                        
             <h1>{obj.title}</h1>
             <h5>{obj.subtitle}</h5>
-            <h5>{DateFormat(obj.data)}</h5>
+            <h5>{DateFormat(obj.date)}</h5>
             <div dangerouslySetInnerHTML={{__html: obj.content}}
                     style={{wordWrap: 'break-word'}}
             ></div>                        
@@ -35,13 +36,12 @@ function Post(props) {
             post(index: "${id}"){
                 title
                 subtitle
-                data
+                date
                 content
             }
         }
     `;
-    const { data, error } = useSWR(getPost, fetcher)      
-    console.log(data)
+    const { data, error } = useSWR(getPost, fetcher)        
     return (
         <ContentData style={{backgroundColor: 'white'}}>
             <div style={{
@@ -55,7 +55,7 @@ function Post(props) {
                 </PostContainer>
             </div>
             <div style={{backgroundColor: 'white'}}>
-                {data ?
+                {data  ?
                     <Comments 
                         fullUrl={`https://algorithms-study.herokuapp.com/post/teste`}
                         id={data.post.title}    
