@@ -1,0 +1,33 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start -p $PORT"
+  },
+  "dependencies": {
+    "apollo-server-micro": "^2.15.1",
+    "axios": "^0.19.2",
+    "axios-cache-adapter": "^2.5.0",
+    "bootstrap": "^4.5.0",
+    "disqus-react": "^1.0.9",
+    "dotenv": "^8.2.0",
+    "graphql-tools": "^6.0.12",
+    "mongodb": "^3.5.9",
+    "next": "^9.4.4",
+    "react": "^16.13.1",
+    "react-bootstrap": "^1.0.1",
+    "react-calendar": "^3.1.0",
+    "react-dom": "^16.13.1",
+    "styled-components": "^5.1.1",
+    "suneditor-react": "^2.12.4",
+    "swr": "^0.2.3",
+    "uuid-v4": "^0.1.0"
+  },
+  "browser": {
+    "child_process": false
+  }
+}

@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Slabo+27px&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Slabo 27px', serif;
+}
+
+html{
+    overflow-y: scroll;
+    scrollbar-width: none;
+    min-height: 100vh;
+}
+html::-webkit-scrollbar {
+    display: none;
+}
