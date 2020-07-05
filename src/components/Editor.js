@@ -7,12 +7,24 @@ const SunEditor = dynamic(
     }
 )
 
+
 const Editor = props => {
-    return (            
+    return (                 
         <SunEditor 
             onChange={props.callback}
             height={'92vh'}
             width={'45rem'}
+            setOptions={{
+                height: 200,
+                buttonList: [
+                    ['font'],
+                    ['fontColor'],
+                    ['paragraphStyle'],
+                    ['align'],
+                    ['list'],
+                    ['image'],
+                ]
+            }}
             setDefaultStyle={"font-family: 'Slabo 27px', serif; font-size: 20px;"}    
         />
     );

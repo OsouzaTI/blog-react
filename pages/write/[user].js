@@ -31,6 +31,7 @@ export default () => {
         setTitle(ev.target.value)
 	}
     const setTextSubTitle = ev => {
+		console.log(ev.target.value)
         setSubTitle(ev.target.value)
 	}
 	
@@ -58,7 +59,7 @@ export default () => {
 		
 		const post = {
 			category: category,
-			content: date,
+			content: date.split('"').join("'"),
 			date:`${new Date().toISOString()}`,
 			subtitle:subtitle,
 			title: title
@@ -72,9 +73,10 @@ export default () => {
 				date:"${post.date}",
 				content:"${post.content}"
 			){
+				category
 				title
 				subtitle
-				data
+				date
 				content
 			}
 		}

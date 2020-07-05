@@ -2,6 +2,7 @@ import styled, { keyframes } from 'styled-components'
 const cores = require('../colors/colors.json')
 export const Grid = styled.div`
     display: grid;
+    grid-template-columns: auto;
     grid-template-rows: 100px auto;
     grid-template-areas: 
         'MN'
@@ -12,11 +13,10 @@ export const Grid = styled.div`
 
 export const GridContent = styled.div`
     display: grid;
-    grid-auto-columns: 300px auto;
-    grid-template-rows: 300px auto;
+    grid-auto-columns: auto;
+    grid-template-rows: auto;
     grid-template-areas: 
-        'UA DT'
-        'LA DT';
+        'DT';        
 `;
 
 export const GridPosts = styled.div`
@@ -25,11 +25,12 @@ export const GridPosts = styled.div`
     grid-template-rows: auto;
     grid-template-areas: 
         'PT PT PT';
-    padding: 10px;       
+    padding: 10px;  
+    max-width: 60vw;         
 `;
 
 export const GridWrite = styled.div`
-      display: grid;
+    display: grid;
     grid-auto-columns: auto;
     grid-template-rows: auto;
     grid-template-areas: 
@@ -100,17 +101,15 @@ export const Menu = styled.div`
 
 export const MenuItem = styled.div`
 
-    width: 120px;
+    width: 90px;
     border: 3px solid;
-    border-bottom-color: ${cores.BACKGROUND};
     background-color: ${cores.BUTTOM};
     text-align: center;
-    padding: 10px;
-    margin: 2px;
     border-radius: 5px;
     &:hover{
         transition: .3s;
-        opacity: .6; 
+        opacity: .6;         
+        
     }
     
     a {
@@ -123,6 +122,17 @@ export const MenuItem = styled.div`
 
 `;
 
+export const MenuItemDropdown = styled.div`
+
+    width: 100px;
+    border: 3px solid;
+    background-color: ${cores.BUTTOM};
+    text-align: center;
+    border-radius: 5px;    
+    cursor: pointer;
+
+`;
+
 export const ContentData = styled.div`
     grid-area: CT;
     background-color: ${cores.BACKGROUND};
@@ -130,19 +140,19 @@ export const ContentData = styled.div`
     
 `;
 
-export const PostContainer = styled.div`
-    width: 50rem;
+export const PostContainer = styled.div` 
+    max-width: 80%;
     min-height: 100%;
     text-align: justify;
-    padding: 50px 20px;
     margin: 10px 0px;
     h1, h5 {
         text-align: center;
     }
     background-color: ${cores.CONTENT}; 
     img{
+        width: 100%;
         margin: auto;
-        display: block;
+        margin-bottom: 10px;        
     }
     img:hover{
         transition: .2s;

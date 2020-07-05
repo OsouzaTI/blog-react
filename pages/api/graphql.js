@@ -5,6 +5,17 @@ const uuid = require('uuid-v4')
 
 const typeDefs = gql`
 
+    type Category {
+        category: String!
+    }
+
+    type User {
+        id: ID!
+        index: String!
+        user: String!
+        password: String!
+    }
+
     type Post {
         id: ID!
         category: String!
@@ -21,6 +32,8 @@ const typeDefs = gql`
     type Query {
         posts(category: String!): [Post]!,
         post(index: String!): Post,
+        user(user: String!, password: String!): [User]!,
+        category: [Category]!,
     }
     
     type Mutation {
@@ -30,7 +43,9 @@ const typeDefs = gql`
             title: String!,
             subtitle: String!,
             content: String!
-        ): Post
+        ): Post,
+        createCategory(category: String!): Category,
+        createUser(user: String!, password: String!): User,
     }
 
     schema {
@@ -44,13 +59,11 @@ const resolvers = {
     Query: {
         posts(_parent, _args, _context, _info) {
             const isObjectEmpty = obj => obj.category === 'null'
-            const filter = isObjectEmpty(_args) ? {} : _args;
-            console.log(filter)
+            const filter = isObjectEmpty(_args) ? {} : _args;            
             return _context.db
             .collection('posts')
             .find(filter).toArray()
-            .then(res => {
-                console.log(res)
+            .then(res => {                
                 return res
             })
         },
@@ -62,6 +75,19 @@ const resolvers = {
                 return res
             })
         },
+        category(_parent, _args, _context, _info){
+            return _context.db
+            .collection('categorias')
+            .find({}).toArray()
+            .then(res => res)
+        },
+        user(_parent, _args, _context, _info){
+            console.log(_args)
+            return _context.db
+            .collection('users')
+            .find(_args).toArray()
+            .then(res => res)
+        },
     },
     Mutation: {
         createPost: async(_parent, _args, _context, _info)=>{
@@ -71,7 +97,22 @@ const resolvers = {
                         .collection('posts')
                         .insert(objIdentifier)
             console.log('Postado com sucesso!')
-        }
+        },
+        createCategory: async(_parent, _args, _context, _info)=>{
+            await _context.db
+                .collection('categorias')
+                .insertOne(_args)
+            console.log('Postado com sucesso!')
+        },
+        createUser: async(_parent, _args, _context, _info)=>{
+            const id = uuid()
+            const objIdentifier = {..._args, index: id}
+            await _context.db
+                .collection('users')
+                .insertOne(objIdentifier)
+            console.log('Postado com sucesso!')
+        },
+
     }
 }
 

@@ -7,14 +7,18 @@ import MenuComponent from '../src/components/header/Menu'
 import Head from 'next/head'
 import React from 'react'
 import { useRouter } from 'next/router'
-
+const setTimerHours = hours => hours * 60 * 1000
 function MyApp({ Component, pageProps }) {
+    // setInterval(() => {
+    //     console.log('limpando localStorage')
+    //     localStorage.clear('categorys');
+    // }, setTimerHours(1));
     const router = useRouter();    
     return (
         <Grid>
             <Head>
                 <title>Algorithms</title>
-                <meta name={"viewport"} content={"initial-scale=1.0, width=device-width"} />
+                <meta name="viewport" content="width=device-width, initial-scale=1"/>
                 <link rel={"shortcut icon"} href={"/favicon2.png"} />
             </Head>
             <MenuComponent />

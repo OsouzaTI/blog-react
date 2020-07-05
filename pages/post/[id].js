@@ -46,9 +46,9 @@ function Post(props) {
         <ContentData style={{backgroundColor: 'white'}}>
             <div style={{
                 display: 'flex',
-                flexDirection: 'column',
                 justifyContent: 'center',
-                alignItems: 'center',                                
+                alignItems: 'center',
+                width:'100%'                                
             }}>
                 <PostContainer style={{minHeight: '100vh'}}>
                     {data ? createPage(data.post) : 'loading'}
