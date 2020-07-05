@@ -95,6 +95,7 @@ export const Menu = styled.div`
     align-items: center;
     /* BOX SHADOW */
     box-shadow: 0px 10px 17px 0px rgba(0,0,0,0.75);
+
 `;
 
 export const MenuItem = styled.div`
@@ -110,7 +111,6 @@ export const MenuItem = styled.div`
     &:hover{
         transition: .3s;
         opacity: .6; 
-
     }
     
     a {

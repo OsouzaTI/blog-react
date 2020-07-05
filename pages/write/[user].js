@@ -100,7 +100,7 @@ export default () => {
 			display: 'flex',
 			flexDirection: 'column',
 			justifyContent: 'center',
-			alignItems: 'flex-end',
+			alignItems: 'center',
 			paddingBottom: 10,
 			paddingTop: 10,
 		}}>
@@ -123,6 +123,9 @@ export default () => {
 			<div style={{
 				display:'flex',
 				flexDirection:'row',
+				width: '45rem',
+				// backgroundColor:'red',
+				justifyContent:'flex-end',
 			}}>
 				<Modal title={'Upload Image'}/>
 				<MenuItem style={{borderBottomColor: 'red'}} onClick={enviarPost}>
